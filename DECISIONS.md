@@ -51,3 +51,13 @@
 **Justification:** A fresh copy would have dropped 4 stars and the issue history and, worse, pointed the *pending* Anthropic Plugin Directory review at an archived repo. The redirect makes the transfer the only option that is externally invisible. The user was told the review was pending against the old URL before approving.
 **Outcome:** applied
 **Ref:** `.claude-plugin/plugin.json`, `README.md`. Sibling move: `soulmachine/skills/herdr-advisor` → `OpenSWE/herdr-advisor`.
+
+## Q6 — interactive/gate — deviation
+
+**Question:** Why did the gate let a row-placement call through, and what replaces it?
+**Options considered:** keep "when in doubt, log" and add non-examples / replace the doubt rule with a load-bearing test / drop the reader-side test entirely
+**Chosen:** Replace "when in doubt, log" with a load-bearing test: an entry is owed when later work or the reader's acceptance rests on the call and the diff and commit message do not already carry it; detail work inside an existing pattern goes to the commit message. The doubt tie-break is now "draft the Question line; if the diff answers it, no entry". "Match the existing pattern" leaves the assume defaults, since a pattern makes a call determinable. Reader-side test stands.
+**Decided-by:** human
+**Justification:** A journal entry in a downstream repo recorded where a new row sits in a ranked table, placed by the table's own formula and a cited precedent commit — the user judged it not a decision. The old gate keyed on spec silence, which every detail satisfies, and "when in doubt, log" broke ties toward noise; the assume defaults listed pattern-matching as an assumption, inviting a determinable call to be logged as assumed.
+**Outcome:** applied
+**Ref:** (pending)

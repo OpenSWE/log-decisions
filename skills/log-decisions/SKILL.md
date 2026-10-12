@@ -1,6 +1,6 @@
 ---
 name: log-decisions
-description: Append-only DECISIONS.md journal at the project root for consequential calls the spec didn't settle. Use when you (or the user) make a non-trivial call worth a durable record — an ambiguity you interpreted, a tradeoff, a deviation, or a hard-to-undo action.
+description: Append-only DECISIONS.md journal at the project root for consequential calls the spec didn't settle. Use when you (or the user) make a load-bearing call — an assumption later work rests on, a tradeoff, a deviation, or a hard-to-undo action — and the diff and commit message would not carry its why on their own.
 ---
 
 # log-decisions
@@ -9,7 +9,11 @@ description: Append-only DECISIONS.md journal at the project root for consequent
 
 ## When to log, and how to decide
 
-Significance is the gate: *if the spec already authorized the call, it's not journal-worthy; if you had to invent the authorization, it is* — put differently, from the reader's side: *would the person who gave you the spec want to know before accepting the work?* **When in doubt, log.** Log **as you work**, at the moment of the call while the reasoning is fresh — a running journal, never a reconstruction at handoff.
+A spec is silent on most of what you do, and silence alone makes nothing a decision. The gate is whether the call is **load-bearing**: later work, or the reader's acceptance of this work, rests on it, and the diff and commit message don't already carry it. From the reader's side: *would the person who gave you the spec want to know before accepting the work — and would the work itself not tell them?*
+
+Load-bearing: an assumption later work rests on, a tradeoff with a real cost, a deviation from what the spec or the existing behavior said, a step that is hard to undo. Detail work is not: a name, a value, a rank, a position, a wording, chosen inside a pattern the project already has — its one-line why goes in the commit message, and the diff shows the rest. **When in doubt, draft the `Question:` line**: if the diff answers it, or the honest `Justification:` is "I followed the existing pattern", there is no entry.
+
+Log **as you work**, at the moment of the call while the reasoning is fresh — a running journal, never a reconstruction at handoff.
 
 **Look before you ask.** Most "open" questions are already answered — search the spec, project files and docs, existing conventions, history, and earlier journal entries before treating one as needing a human. Premature escalation is the most common failure.
 
@@ -22,7 +26,7 @@ Then classify on two axes — **determinable** (did research settle it?) and **r
 
 **Hard floor:** the *catastrophic* irreversible subset — data loss, deleting or overwriting work that isn't yours, irreversible spend, sending or publishing what can't be recalled, breaking something others depend on — **escalates even when determinable.** Nothing unrecoverable happens unattended.
 
-- **Assume** — write `Outcome: assumed`, `Chosen:` your default, `Justification:` the default rule you applied (match the existing pattern · prefer the standard, least-surprising option · prefer the choice cheapest to reverse), and **proceed**. A settled entry flagged for async review, not a blocker. When several open questions pile up, **batch them into one ask**.
+- **Assume** — write `Outcome: assumed`, `Chosen:` your default, `Justification:` the default rule you applied (prefer the standard, least-surprising option · prefer the choice cheapest to reverse — a call an existing pattern settles was determinable, not assumed), and **proceed**. A settled entry flagged for async review, not a blocker. When several open questions pile up, **batch them into one ask**.
 - **Escalate** — write `Outcome: escalated`, `Chosen: —`, `Justification:` *why only a human can decide*, and **pause to ask a human**. It stays open until a human resolves it.
 
 Categories (a descriptive label on each entry): `gate-resolution` (answered an open question) · `irreversible-action` (a hard-to-undo step) · `deviation` (changed existing behavior/plan) · `tradeoff` (chose X over Y at a cost).

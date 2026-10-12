@@ -25,7 +25,7 @@ npx skills add OpenSWE/log-decisions
 
 The skill ([`skills/log-decisions/SKILL.md`](skills/log-decisions/SKILL.md)) defines:
 
-- **The bar** — if the spec already authorized the call it's not journal-worthy; if the agent had to invent the authorization, it is — put differently, would the person who gave the spec want to know before accepting the work?
+- **The bar** — a call is journal-worthy when it is *load-bearing*: later work, or the reader's acceptance of this work, rests on it, and the diff and commit message don't already carry it. Detail work chosen inside an existing pattern — a name, a value, a position — belongs in the commit message, not the journal.
 - **The 2×2** — classify each call as *determinable × reversible*, then **decide** (grounded by an artifact), **assume** (safe default, logged for async review), or **escalate** (stop and ask). A catastrophic floor — data loss, irreversible spend, sending or publishing what can't be recalled, breaking something others depend on — always escalates.
 - **The entry** — one append-only block per decision, written at the moment of the call: Question, Options considered, Chosen, Decided-by, Justification, Outcome, with `Supersedes:` for revisions. Never edited, never reordered.
 - **The handoff** — when work is handed back, the `assumed` and `escalated` entries it appended are listed — what to confirm or revise, what's blocked — so the reader gets the review queue without opening the journal.
