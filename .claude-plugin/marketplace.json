@@ -7,7 +7,7 @@
       "name": "log-decisions",
       "source": "./",
       "description": "Append-only DECISIONS.md journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "license": "MIT",
       "keywords": ["decisions", "journal", "autonomy", "afk"]
     }

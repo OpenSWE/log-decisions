@@ -55,9 +55,10 @@ One append-only `##` block in `DECISIONS.md` at the project root. Create the fil
 Verify after appending:
 
 ```bash
-awk '/^## / { i++
-        if ($2 ~ /^Q[0-9]+$/) { n = substr($2,2)+0
-          if (n != i) { printf "  line %d: %s is entry #%d — expected Q%d\n", NR, $2, i, i; bad++ } } }
+# Field 2 is read as $f: skill hosts replace a literal $ and a digit with the skill's arguments.
+awk -v f=2 '/^## / { i++
+        if ($f ~ /^Q[0-9]+$/) { n = substr($f,2)+0
+          if (n != i) { printf "  line %d: %s is entry #%d — expected Q%d\n", NR, $f, i, i; bad++ } } }
       END { printf "  %d entries, %d break(s) — %s\n", i, bad+0, (bad?"BROKEN":"OK") }' DECISIONS.md
 ```
 
