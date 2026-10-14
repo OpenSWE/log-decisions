@@ -101,11 +101,14 @@ collisions, and choose a descriptive base if you are unnamed.
 tab, and working directory (`herdr pane process-info --pane <id>` shows its
 command line). Otherwise **create** one to your right, in the same tab and
 cwd. This workflow splits right even when the Herdr skill would split down,
-opens no new tab or workspace, and leaves the user's focus where it is:
+opens no new tab or workspace, and leaves the user's focus where it is.
+`<skill-dir>` here and below is the absolute path of the folder that holds
+this file: `~/.agents/skills/herdr-advisor` after `npx skills add`, a folder
+under `~/.claude/plugins/` for the Claude Code plugin.
 
 ```bash
 herdr pane split --current --direction right --cwd "$PWD" --no-focus   # → .result.pane.pane_id
-herdr pane run <pane-id> "python3 ~/.agents/skills/herdr-advisor/watchdog.py <pane-id> &"
+herdr pane run <pane-id> "python3 <skill-dir>/watchdog.py <pane-id> &"
 sleep 3
 herdr agent start <advisor-name> --kind <kind> --pane <pane-id> -- <native arguments>
 ```
@@ -130,7 +133,7 @@ focus. Send the handoff **without `--wait`**, then carry on with your turn:
 herdr agent prompt "$advisor" "<handoff>"
 ```
 
-> Read ~/.agents/skills/herdr-advisor/ADVISOR.md and follow it. You are the
+> Read <skill-dir>/ADVISOR.md and follow it. You are the
 > read-only leaf advisor for worker <worker-name-or-pane-id>: hand every change
 > to the worker, and never create or consult another advisor. The spec is
 > <path-or-issue>. So far: <where the work stands>. Constraints: <constraints>.

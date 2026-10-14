@@ -6,19 +6,9 @@
   },
   "plugins": [
     {
-      "name": "log-decisions",
-      "source": "./skills/log-decisions",
-      "description": "Append-only DECISIONS.md journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone."
-    },
-    {
-      "name": "lessons",
-      "source": "./skills/lessons",
-      "description": "Review a repo's merged work since the last review, record each lesson in LESSONS.md with its evidence, and promote lessons seen on 3 separate days into the code standards."
-    },
-    {
-      "name": "distill-prompt",
-      "source": "./skills/distill-prompt",
-      "description": "Distill a conversation's underlying goal into one reusable prompt that reaches the same final outcome in a fresh session."
+      "name": "skills",
+      "source": "./",
+      "description": "OpenSWE's agent skills: log-decisions (a DECISIONS.md journal of the calls the spec didn't settle), lessons (a LESSONS.md ledger that turns review findings into code standards), herdr-advisor (pair a Herdr worker with a stronger advisor model), and distill-prompt (turn a session into one reusable prompt)."
     }
   ]
 }

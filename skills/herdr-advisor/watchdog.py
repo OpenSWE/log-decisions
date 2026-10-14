@@ -18,7 +18,7 @@ import time
 from pathlib import Path
 
 LOG = Path.home() / "Library/Logs/herdr-advisor.log"
-SKILL = "~/.agents/skills/herdr-advisor/ADVISOR.md"
+SKILL = Path(__file__).absolute().with_name("ADVISOR.md")   # beside this file, wherever the skill is installed
 MAX_BLOCKS, WINDOW_S, GRACE_S, START_S = 8, 3600, 10, 300
 REASON = (f"Re-read {SKILL} first, then resume. Your loop has not met its end condition, "
           "so this turn may not end: start the next pass from `herdr agent get` and continue.")

@@ -497,3 +497,14 @@ An investigation in the same session corrected a belief formed that night: a `pr
 **Justification:** Relative paths would change the watchdog's launch line, the advisor handoff prompt and four harness launch rows that go to other CLIs, and none of them can be checked here without a live Herdr pair. Dropping the plugin is a manifest change, and every supported route keeps working. The README said "both routes" give the load-bearing path, but the plugin route never did, even in the old `OpenSWE/herdr-advisor` repo.
 **Outcome:** applied
 **Ref:** `.claude-plugin/marketplace.json`, `skills/herdr-advisor/README.md`, root `README.md`
+
+## Q67 — herdr-advisor/plugin-route — deviation
+
+**Question:** Frank wants all of `OpenSWE/skills` as one Claude Code plugin, herdr-advisor included, and chose to make its paths relative instead of leaving it out. How does the skill find its own files from any install folder?
+**Options considered:** relative to the skill's own folder / keep `~/.agents/skills/herdr-advisor/` and leave herdr-advisor out of the plugin (Q66)
+**Chosen:** `watchdog.py` takes `ADVISOR.md` from beside itself (`Path(__file__).absolute()`), so its re-prompt names the real path. `SKILL.md` defines `<skill-dir>` once, as the folder that holds it, and the watchdog launch line, the advisor handoff and the Devin, Kimi, Kiro, oh-my-pi and OpenCode rows of `HARNESS-CLIS.md` use it. `harness/launch-test.sh` derives it from its own location. The README's "install path is load-bearing" section now says any path works.
+**Decided-by:** human (relative paths, ship in the plugin); agent (`<skill-dir>` as the placeholder, `absolute()` over `resolve()` so a store symlink keeps its `~/.agents` spelling)
+**Justification:** The worker reads `SKILL.md` from a known path (Claude Code states the skill's base directory), so it can fill `<skill-dir>` as it already fills `<pane-id>` and `<model-id>`. Checked offline: the self-test passes in the repo and in a plugin-cache copy, and from the cache `watchdog.SKILL` resolves to a real file. Not checked: a live Herdr pair, which needs Herdr and a second CLI logged in.
+**Outcome:** applied
+**Ref:** `watchdog.py`, `SKILL.md`, `HARNESS-CLIS.md`, `harness/launch-test.sh`, `README.md`
+**Supersedes:** Q66 — the plugin route is back, and its paths now resolve

@@ -14,6 +14,7 @@ ROOT=$1; KIND=$2; shift 2
 # Values may hold spaces (JSON); single-quote them for the eval below.
 ENVS=""; while [ "$1" != "--" ]; do ENVS="$ENVS $1 '$2'"; shift 2; done; shift
 LOG=$HOME/Library/Logs/herdr-advisor.log
+SKILL_DIR=$(cd "$(dirname "$0")/.." && pwd)
 strip() { sed 's/\x1b\][^\x07]*\x07//g'; }
 field() { strip | grep -oE "\"$1\":(\"[^\"]*\"|[0-9]+)" | head -1 | cut -d: -f2- | tr -d '"'; }
 state() { herdr agent get "$P" 2>&1 | strip | python3 -c '
@@ -30,7 +31,7 @@ finish() {
     case "$*" in FAIL*|*no-reply*|*reply=blocked*) note "--- screen $KIND:"; herdr pane read "$P" --source visible 2>&1 | strip | grep -v '^\s*$' | tail -18 >&2 ;; esac
     herdr pane close "$P" >/dev/null 2>&1; echo "$KIND: $*"; }
 
-herdr pane run "$P" "python3 ~/.agents/skills/herdr-advisor/watchdog.py $P &" >/dev/null 2>&1
+herdr pane run "$P" "python3 $SKILL_DIR/watchdog.py $P &" >/dev/null 2>&1
 sleep 3
 NAME="t-$KIND-advisor"
 tries=0
@@ -49,7 +50,7 @@ pgrep -f "watchdog.py $P" >/dev/null || { finish "FAIL watchdog died before star
 # send it once more.
 F=advisor-probe-$$.txt   # per run, so parallel runs in one directory do not clobber each other's check
 rm -f "$F"
-PROBE="Do these four steps in order, each with the tool named, then say in one line which were refused: 1. read the first line of ~/.agents/skills/herdr-advisor/ADVISOR.md with your file-reading tool; 2. run the shell command \`herdr agent list\`; 3. run the shell command \`date\`; 4. create a file named $F in the current directory containing the word probe, with your file-editing tool. Finish with exactly the word ADVISOR-OK on its own line."
+PROBE="Do these four steps in order, each with the tool named, then say in one line which were refused: 1. read the first line of $SKILL_DIR/ADVISOR.md with your file-reading tool; 2. run the shell command \`herdr agent list\`; 3. run the shell command \`date\`; 4. create a file named $F in the current directory containing the word probe, with your file-editing tool. Finish with exactly the word ADVISOR-OK on its own line."
 herdr agent prompt "$P" "$PROBE" --wait --timeout 300000 >/dev/null 2>&1
 set -- $(state); t1=$4; s1=$3
 if [ "$t1" = 0 ] && [ "$s1" = idle ]; then

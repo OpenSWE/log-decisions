@@ -14,7 +14,7 @@ Claude Code plugin:
 
 ```text
 /plugin marketplace add OpenSWE/skills
-/plugin install distill-prompt@openswe
+/plugin install skills@openswe   # all four OpenSWE skills
 ```
 
 ## License

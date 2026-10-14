@@ -14,7 +14,7 @@ Claude Code plugin:
 
 ```text
 /plugin marketplace add OpenSWE/skills
-/plugin install log-decisions@openswe
+/plugin install skills@openswe   # all four OpenSWE skills
 ```
 
 ## What it does

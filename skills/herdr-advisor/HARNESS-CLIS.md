@@ -25,7 +25,7 @@ working login on the reference host); the launch is `harness/launch-test.sh`,
 one live row per run. `‡` marks a top rung the CLI's docs do not state.
 
 The launch recipe is in `SKILL.md`; a row supplies its `<kind>` and `<native
-arguments>`.
+arguments>`. `<skill-dir>` is the skill's own folder, as `SKILL.md` defines it.
 
 | CLI | Herdr kind | Effort | Native arguments |
 |---|---|---|---|
@@ -36,13 +36,13 @@ arguments>`.
 | [Codex](https://github.com/openai/codex) | `codex` | `max` | `-a never -c default_permissions="herdr-advisor" -c 'permissions.herdr-advisor.extends=":read-only"' -c 'permissions.herdr-advisor.network.enabled=true' -c "permissions.herdr-advisor.network.unix_sockets={\"$HERDR_SOCKET_PATH\"=\"allow\"}" -c 'shell_environment_policy.set.HERDR_ENV="1"' -c "shell_environment_policy.set.HERDR_SOCKET_PATH=\"$HERDR_SOCKET_PATH\"" --search -c model_reasoning_effort=<effort> -m <model-id>` plus one `-c mcp_servers.<name>.enabled=false` per server in `~/.codex/config.toml` (see below) |
 | [Copilot](https://github.com/features/copilot/cli) † | `copilot` | `max` | `--allow-all-tools --deny-tool write --deny-tool memory --excluded-tools task --no-ask-user --disable-builtin-mcps --reasoning-effort <effort> --model <model-id>` |
 | [Cursor](https://cursor.com/cli) | `cursor` | id | `--mode=ask -f --trust --model <model-id>` |
-| [Devin](https://devin.ai/cli) | `devin` | id | `--config ~/.agents/skills/herdr-advisor/harness/devin.json --permission-mode bypass --respect-workspace-trust false --model <model-id>` |
+| [Devin](https://devin.ai/cli) | `devin` | id | `--config <skill-dir>/harness/devin.json --permission-mode bypass --respect-workspace-trust false --model <model-id>` |
 | [Grok Build](https://x.ai/build) | `grok` | `high` ‡ | `--permission-mode dontAsk --allow 'Bash(herdr *)' --allow Read --allow Grep --allow WebSearch --allow WebFetch --deny Edit --deny MCPTool --reasoning-effort <effort> -m <model-id>` |
 | [Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | `hermes` | `ultra` | `--reasoning <effort> chat --yolo -t terminal,web --provider <provider> -m <model-id>` |
-| [Kimi Code](https://github.com/MoonshotAI/kimi-code) | `kimi` | config | `--auto --agent-file ~/.agents/skills/herdr-advisor/harness/kimi.md -m <model-id>` |
-| [Kiro](https://kiro.dev/cli/) (one turn only, see Gaps) | `kiro` | `max` | `chat --agent herdr-advisor --effort <effort>`, after copying `harness/kiro.json` to `~/.kiro/agents/herdr-advisor.json` with its `model` field set to `<model-id>` (no model flag; the agent file carries it) |
-| [oh-my-pi](https://github.com/can1357/oh-my-pi) | `omp` | `max` | `--approval-mode write --config ~/.agents/skills/herdr-advisor/harness/omp.yml --tools read,grep,glob,bash,web_search --no-extensions -e ~/.omp/agent/extensions/herdr-omp-agent-state.ts --thinking=<effort> --model <model-id>` |
-| [OpenCode](https://github.com/anomalyco/opencode) | `opencode` | none | `-m <provider>/<model-id>` with `OPENCODE_CONFIG=~/.agents/skills/herdr-advisor/harness/opencode.json` in the pane's environment |
+| [Kimi Code](https://github.com/MoonshotAI/kimi-code) | `kimi` | config | `--auto --agent-file <skill-dir>/harness/kimi.md -m <model-id>` |
+| [Kiro](https://kiro.dev/cli/) (one turn only, see Gaps) | `kiro` | `max` | `chat --agent herdr-advisor --effort <effort>`, after copying `<skill-dir>/harness/kiro.json` to `~/.kiro/agents/herdr-advisor.json` with its `model` field set to `<model-id>` (no model flag; the agent file carries it) |
+| [oh-my-pi](https://github.com/can1357/oh-my-pi) | `omp` | `max` | `--approval-mode write --config <skill-dir>/harness/omp.yml --tools read,grep,glob,bash,web_search --no-extensions -e ~/.omp/agent/extensions/herdr-omp-agent-state.ts --thinking=<effort> --model <model-id>` |
+| [OpenCode](https://github.com/anomalyco/opencode) | `opencode` | none | `-m <provider>/<model-id>` with `OPENCODE_CONFIG=<skill-dir>/harness/opencode.json` in the pane's environment |
 | [pi](https://github.com/earendil-works/pi) | `pi` | `max` | `--tools read,grep,find,ls,bash --no-extensions --thinking <effort> --model <provider>/<model-id>` |
 | [Qoder](https://qoder.com/en/cli) | `qodercli` | `max` | `--permission-mode dont_ask --tools Read,Grep,Glob,Bash,WebSearch,WebFetch --allowed-tools 'Bash(herdr:*)' --strict-mcp-config --reasoning-effort <effort> -m <model-id>` |
 

@@ -16,7 +16,7 @@ npx skills add OpenSWE/skills --skill lessons
 
 ```text
 /plugin marketplace add OpenSWE/skills
-/plugin install lessons@openswe
+/plugin install skills@openswe   # all four OpenSWE skills
 ```
 
 ## What it does

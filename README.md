@@ -22,15 +22,14 @@ npx skills add OpenSWE/skills --skill log-decisions  # one skill
 
 ### Claude Code (plugin)
 
-Each skill except `herdr-advisor` is its own plugin in the `openswe` marketplace. `herdr-advisor` needs the
-`~/.agents/skills/` install path, so install it with `npx skills add` (see [its README](skills/herdr-advisor/)):
+All four skills ship as one plugin, `skills`, in the `openswe` marketplace:
 
 ```text
 /plugin marketplace add OpenSWE/skills
-/plugin install log-decisions@openswe
+/plugin install skills@openswe
 ```
 
-On Claude Code 2.1.275 or later, one step does both: `/plugin install log-decisions --marketplace OpenSWE/skills`.
+On Claude Code 2.1.275 or later, one step does both: `/plugin install skills --marketplace OpenSWE/skills`.
 
 ## Where the skills came from
 
@@ -38,7 +37,7 @@ All three old repos were merged in on 2026-10-14, with their full commit history
 
 - This repo was `OpenSWE/log-decisions`. GitHub redirects that URL here, so old clones and `npx skills add OpenSWE/log-decisions` still work.
 - `OpenSWE/herdr-advisor` and `OpenSWE/lessons` are archived. They still install, but they no longer get updates.
-- If you installed a plugin as `<name>@<name>` (for example `log-decisions@log-decisions`), uninstall it and install `<name>@openswe`. For `herdr-advisor@herdr-advisor`, uninstall it and use `npx skills add OpenSWE/skills --skill herdr-advisor`.
+- If you installed a plugin as `<name>@<name>` (for example `log-decisions@log-decisions`), uninstall it and install `skills@openswe`, which holds all four skills.
 
 ## License
 

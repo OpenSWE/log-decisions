@@ -91,3 +91,14 @@
 **Justification:** This layout leaves `skills/<name>/SKILL.md` where `npx skills` and the fleet's `agent-sync adopt` expect it, so nothing outside this repo changes. A plugin install now copies only the skill's own folder instead of the whole repo. Tested: `claude plugin validate --strict` passes for each plugin and the marketplace, a throwaway install shows exactly one skill per plugin, and `npx skills add -l` lists all four skills. herdr-advisor has no `plugin.json` (Q66 in its journal).
 **Outcome:** applied
 **Ref:** `.claude-plugin/marketplace.json`, `skills/*/.claude-plugin/plugin.json`
+
+## Q10 — interactive/plugin-directory — deviation
+
+**Question:** Frank wants the whole repo to be one Claude Code plugin holding all four skills, named `skills`, with the OpenSWE logo as its icon, submitted to the Plugin Directory in place of the old log-decisions submission. What does the layout become?
+**Options considered:** one plugin at the repo root / one plugin per skill (Q9)
+**Chosen:** The repo root is the plugin: `.claude-plugin/plugin.json` named `skills`, 1.0.0, with the four skills found by the default `skills/` scan, and `.claude-plugin/icon.png` copied from `coding-agent/products/openswe/logo.png` (1254 px square). `marketplace.json` lists that one plugin with `"source": "./"`. The per-skill `plugin.json` files from Q9 are gone. Install: `/plugin install skills@openswe`. The directory submission's path is the repository root of `OpenSWE/skills`.
+**Decided-by:** human
+**Justification:** One listing for all of OpenSWE's skills. The directory takes an icon only on the first submission, so the icon goes in before submitting. Tested: `claude plugin validate --strict` passes for the plugin and the marketplace, and a throwaway install shows 4 skills.
+**Outcome:** applied
+**Ref:** `.claude-plugin/`, README install sections; herdr-advisor Q67 makes that skill work from the plugin's folder
+**Supersedes:** Q9 — one plugin instead of one per skill; Q7 — only its manifest shape
