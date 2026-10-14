@@ -7,72 +7,18 @@
   "plugins": [
     {
       "name": "log-decisions",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/log-decisions"
-      ],
-      "description": "Append-only DECISIONS.md journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone.",
-      "version": "1.3.1",
-      "author": {
-        "name": "soulmachine"
-      },
-      "homepage": "https://github.com/OpenSWE/skills",
-      "repository": "https://github.com/OpenSWE/skills",
-      "license": "MIT",
-      "keywords": [
-        "decisions",
-        "journal",
-        "adr",
-        "autonomy",
-        "agents",
-        "afk"
-      ]
+      "source": "./skills/log-decisions",
+      "description": "Append-only DECISIONS.md journal recording the consequential calls the spec didn't settle — what was chosen, by whom, and why, with decide / assume / escalate rules for what an agent may settle alone."
     },
     {
       "name": "lessons",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/lessons"
-      ],
-      "description": "Review a repo's merged work since the last review, record each lesson in LESSONS.md with its evidence, and promote lessons seen on 3 separate days into the code standards.",
-      "version": "1.0.3",
-      "author": {
-        "name": "soulmachine"
-      },
-      "homepage": "https://github.com/OpenSWE/skills",
-      "repository": "https://github.com/OpenSWE/skills",
-      "license": "MIT",
-      "keywords": [
-        "lessons",
-        "code-review",
-        "standards",
-        "agents",
-        "autonomy"
-      ]
+      "source": "./skills/lessons",
+      "description": "Review a repo's merged work since the last review, record each lesson in LESSONS.md with its evidence, and promote lessons seen on 3 separate days into the code standards."
     },
     {
       "name": "distill-prompt",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/distill-prompt"
-      ],
-      "description": "Distill a conversation's underlying goal into one reusable prompt that reaches the same final outcome in a fresh session.",
-      "version": "1.0.0",
-      "author": {
-        "name": "soulmachine"
-      },
-      "homepage": "https://github.com/OpenSWE/skills",
-      "repository": "https://github.com/OpenSWE/skills",
-      "license": "MIT",
-      "keywords": [
-        "prompt",
-        "handoff",
-        "session",
-        "agents"
-      ]
+      "source": "./skills/distill-prompt",
+      "description": "Distill a conversation's underlying goal into one reusable prompt that reaches the same final outcome in a fresh session."
     }
   ]
 }

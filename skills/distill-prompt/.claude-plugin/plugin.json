@@ -1,0 +1,20 @@
+{
+  "name": "distill-prompt",
+  "version": "1.0.0",
+  "description": "Distill a conversation's underlying goal into one reusable prompt that reaches the same final outcome in a fresh session.",
+  "author": {
+    "name": "soulmachine"
+  },
+  "homepage": "https://github.com/OpenSWE/skills/tree/main/skills/distill-prompt",
+  "repository": "https://github.com/OpenSWE/skills",
+  "license": "MIT",
+  "keywords": [
+    "prompt",
+    "handoff",
+    "session",
+    "agents"
+  ],
+  "skills": [
+    "./"
+  ]
+}

@@ -81,3 +81,13 @@
 **Justification:** Two Q-numbered journals cannot merge into one file without renumbering, which breaks every citation, so each skill's journal stays whole beside it. A journal in the skill folder ships with `npx skills add`, but nothing loads it into context. Archiving keeps existing installs working; deleting them would break them for no gain.
 **Outcome:** applied
 **Ref:** merge commits c3a68f6 (herdr-advisor) and 208c104 (lessons)
+
+## Q9 — interactive/plugin-directory — deviation
+
+**Question:** The Plugin Directory submission for log-decisions (portal id ecbfe5d1, since Aug 11) reads the plugin from the repo root of `swe-workflow/log-decisions`. Since Q7 the root has no `plugin.json`, and the portal cannot change a submission's repo or path. Pin it to an old tag, or withdraw it and submit again from a plugin folder?
+**Options considered:** pin the tracked tag to 96cda54 / withdraw and resubmit with a new plugin folder
+**Chosen:** Resubmit. Each plugin skill's folder is now its own plugin root: `skills/<name>/.claude-plugin/plugin.json` with `"skills": ["./"]`, and `marketplace.json` entries are `"source": "./skills/<name>"` instead of `strict: false`. Version, author, keywords and the rest now live in each `plugin.json`, so bump a version there. The new submission's path is `skills/log-decisions` in `OpenSWE/skills`.
+**Decided-by:** human (resubmit); agent (plugin-root-in-skill-folder layout)
+**Justification:** This layout leaves `skills/<name>/SKILL.md` where `npx skills` and the fleet's `agent-sync adopt` expect it, so nothing outside this repo changes. A plugin install now copies only the skill's own folder instead of the whole repo. Tested: `claude plugin validate --strict` passes for each plugin and the marketplace, a throwaway install shows exactly one skill per plugin, and `npx skills add -l` lists all four skills. herdr-advisor has no `plugin.json` (Q66 in its journal).
+**Outcome:** applied
+**Ref:** `.claude-plugin/marketplace.json`, `skills/*/.claude-plugin/plugin.json`
