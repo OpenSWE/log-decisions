@@ -30,6 +30,8 @@ down reaches every later session. A promoted lesson is checked by every review.
    reopened in the range (`gh`). The lessons already in `LESSONS.md` are the patterns to look
    for. Give each commit one mark:
    - **redo**: a later commit fixed it again, reverted it, or covered a sibling case it missed.
+     A later commit that only takes the next step the user asked for, with nothing wrong in the
+     earlier one, is no redo: the earlier one stays clean.
    - **should not have merged**: it shipped past a red test, past a problem a review named, or
      with no record of what was run.
    - **thin**: its verification can't show the fix works. It has no test that fails without it,
@@ -43,6 +45,8 @@ down reaches every later session. A promoted lesson is checked by every review.
 3. **Write the lessons.** Group the findings by cause. For each group, look for the lesson that
    already states its rule:
    - In `LESSONS.md`: add the evidence, and add the review's date to its Seen list if it is new.
+     The review's date is the range's last commit date, in that commit's own timezone
+     (`git log -1 --format=%cd --date=short`).
      An inherited lesson becomes Seen 1×.
    - In the standards file: the rule was missed again. Add the evidence under its bullet in
      "Moved to the standards".
@@ -75,7 +79,7 @@ down reaches every later session. A promoted lesson is checked by every review.
 - Write the rule as the action to take: "Reproduce the reporter's exact case before you call
   it fixed."
 - Every claim from this repo cites a sha or issue number a reader can open.
-- Seen counts separate review days. Six commits on one day are Seen 1×.
+- Seen counts separate review dates (step 3). Six commits on one day are Seen 1×.
 
 ## Pointer lines
 
