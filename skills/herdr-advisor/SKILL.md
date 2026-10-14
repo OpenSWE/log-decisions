@@ -1,6 +1,7 @@
 ---
 name: herdr-advisor
-description: Pair a Herdr worker with one advisor, a stronger model that answers questions on the user's behalf to unblock the worker and leads it to its next task, by accepting its prompt suggestion or sending it text: a worker "still waiting on your go" gets `go`. Invoked by the user (`/herdr-advisor`), and by you in one case only, before the first step of the work and whatever the plan's size, when a grilling session has ended with its frontier empty, the user's confirmation has you execute the plan now, no advisor pair is live, and the confirmation did not decline one.
+description: >-
+  Pair a Herdr worker with one advisor, a stronger model that answers questions on the user's behalf to unblock the worker and leads it to its next task, by accepting its prompt suggestion or sending it text: a worker "still waiting on your go" gets `go`. Invoked by the user (`/herdr-advisor`), and by you in one case only, before the first step of the work and whatever the plan's size, when a grilling session has ended with its frontier empty, the user's confirmation has you execute the plan now, no advisor pair is live, and the confirmation did not decline one.
 ---
 
 # Herdr advisor
