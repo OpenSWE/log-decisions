@@ -197,4 +197,4 @@ the user's next `/herdr-advisor`, or by the grill trigger when a later grill
 ends; never by you otherwise.
 
 Why each rule exists: `DECISIONS.md`, Q22 onward —
-<https://github.com/OpenSWE/herdr-advisor/blob/main/DECISIONS.md>.
+<https://github.com/OpenSWE/skills/blob/main/skills/herdr-advisor/DECISIONS.md>.

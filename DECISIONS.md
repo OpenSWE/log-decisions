@@ -71,3 +71,13 @@
 **Justification:** The same reason as Q5: a rename keeps history, stars and issues, and GitHub redirects every old URL, so `npx skills add OpenSWE/log-decisions`, the Show HN link and the pending Plugin Directory review keep resolving. A marketplace named `log-decisions` would be wrong for a multi-skill repo, so it is now `openswe`. Users who installed `log-decisions@log-decisions` must reinstall; the README says how. One plugin per skill keeps each installable alone.
 **Outcome:** applied
 **Ref:** `.claude-plugin/marketplace.json`, `README.md`, `skills/distill-prompt/`. Source of the copy: `soulmachine/skills` 051f2ab.
+
+## Q8 — interactive/skills-repo — irreversible-action
+
+**Question:** Frank asked to fold `OpenSWE/herdr-advisor` and `OpenSWE/lessons` into this repo. How do their history, journals and READMEs fit a repo that now holds four skills, and what happens to the old repos?
+**Options considered:** merge with history / copy the files only; journal and README at the root / in each skill's folder; archive the old repos / delete them
+**Chosen:** Merged each repo with `--allow-unrelated-histories`, so `git log` on a skill file still shows its full history. Each skill keeps its README in its own folder, and the root README is an index plus the install commands. herdr-advisor's journal is now `skills/herdr-advisor/DECISIONS.md`, and its SKILL.md and ADVISOR.md link there; this root journal stays the repo's and log-decisions' own. `THIRD-PARTY-NOTICES` moved into `skills/lessons/`. `marketplace.json` gained a plugin for each, at their old versions. The old repos get a pointer at the top of their README and are archived, not deleted.
+**Decided-by:** human (fold); agent (layout, archive over delete)
+**Justification:** Two Q-numbered journals cannot merge into one file without renumbering, which breaks every citation, so each skill's journal stays whole beside it. A journal in the skill folder ships with `npx skills add`, but nothing loads it into context. Archiving keeps existing installs working; deleting them would break them for no gain.
+**Outcome:** applied
+**Ref:** merge commits c3a68f6 (herdr-advisor) and 208c104 (lessons)

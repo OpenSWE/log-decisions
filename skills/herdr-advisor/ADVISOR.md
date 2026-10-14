@@ -179,4 +179,4 @@ re-created by the user's next `/herdr-advisor`, not by you.
   or "nothing left".
 
 Why each rule exists: `DECISIONS.md`, Q22 onward —
-<https://github.com/OpenSWE/herdr-advisor/blob/main/DECISIONS.md>.
+<https://github.com/OpenSWE/skills/blob/main/skills/herdr-advisor/DECISIONS.md>.

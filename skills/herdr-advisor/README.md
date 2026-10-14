@@ -16,14 +16,14 @@ session ends, the user confirms a plan for it to execute, and no advisor pair is
 ### Universal (any skills-compatible agent)
 
 ```text
-npx skills add OpenSWE/herdr-advisor
+npx skills add OpenSWE/skills --skill herdr-advisor
 ```
 
 ### Claude Code (plugin)
 
 ```text
-/plugin marketplace add OpenSWE/herdr-advisor
-/plugin install herdr-advisor@herdr-advisor
+/plugin marketplace add OpenSWE/skills
+/plugin install herdr-advisor@openswe
 ```
 
 ### The install path is load-bearing
@@ -46,7 +46,7 @@ git clone. If you vendor it anywhere else, rewrite those paths.
 
 ## What's in it
 
-All under [`skills/herdr-advisor/`](skills/herdr-advisor/):
+All in this folder:
 
 | File | Reader | Purpose |
 |---|---|---|
@@ -87,7 +87,8 @@ there before changing a rule; most of them are load-bearing in a way that is not
 ## Provenance
 
 Extracted from [`soulmachine/skills`](https://github.com/soulmachine/skills) with its full commit
-history. Configs ship with placeholders (`<model-id>`, `<your-devin-org-id>`) — fill them in before
+history, then kept in `OpenSWE/herdr-advisor` until 2026-10-14, when it moved here, history included.
+Configs ship with placeholders (`<model-id>`, `<your-devin-org-id>`) — fill them in before
 first use.
 
 ## License
