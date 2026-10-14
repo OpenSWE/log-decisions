@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "devin": {
+    "org_id": "<your-devin-org-id>"
+  },
+  "shell": {
+    "setup_complete": true
+  },
+  "theme_mode": "dark"
+}
