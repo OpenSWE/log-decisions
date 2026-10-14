@@ -487,3 +487,13 @@ An investigation in the same session corrected a belief formed that night: a `pr
 **Justification:** Measured on m2 with the published row: `ENV-MISSING`, `SOCK=unset`, `herdr` still working through the default socket. With the overrides: `ENV-OK`, the socket path set, and a variable from the user's own `set` table still present, so `-c` merges into that table. `inherit=all` would also fix it but hands the model's shell every other variable and overrides a choice the user made.
 **Outcome:** applied
 **Ref:** herdr-advisor/HARNESS-CLIS.md (Codex row, Codex environment). Commit: 164b07f.
+
+## Q66 — herdr-advisor/plugin-route — deviation
+
+**Question:** A test install of `herdr-advisor@openswe` put the skill at `~/.claude/plugins/cache/openswe/herdr-advisor/1.0.0/skills/herdr-advisor/`. The skill hardcodes `~/.agents/skills/herdr-advisor/` in eight places, so none of them resolve under a plugin install. Make the paths relative to the skill folder, or stop shipping the plugin?
+**Options considered:** stop offering the Claude Code plugin / make every path relative to the skill folder
+**Chosen:** Stop offering the plugin. The `herdr-advisor` entry is gone from `marketplace.json`, and the README's install section names only `npx skills add` (and `agent-sync adopt` of a clone). Both of those put the skill at `~/.agents/skills/herdr-advisor/`.
+**Decided-by:** agent (Frank asked for the breakage to be fixed)
+**Justification:** Relative paths would change the watchdog's launch line, the advisor handoff prompt and four harness launch rows that go to other CLIs, and none of them can be checked here without a live Herdr pair. Dropping the plugin is a manifest change, and every supported route keeps working. The README said "both routes" give the load-bearing path, but the plugin route never did, even in the old `OpenSWE/herdr-advisor` repo.
+**Outcome:** applied
+**Ref:** `.claude-plugin/marketplace.json`, `skills/herdr-advisor/README.md`, root `README.md`

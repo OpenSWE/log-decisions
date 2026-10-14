@@ -19,20 +19,14 @@ session ends, the user confirms a plan for it to execute, and no advisor pair is
 npx skills add OpenSWE/skills --skill herdr-advisor
 ```
 
-### Claude Code (plugin)
-
-```text
-/plugin marketplace add OpenSWE/skills
-/plugin install herdr-advisor@openswe
-```
-
 ### The install path is load-bearing
 
 Eight places in the skill hardcode `~/.agents/skills/herdr-advisor/` — the watchdog's launch line,
 the advisor's handoff prompt, and four harness rows that pass a config file by absolute path. **The
-skill only works when it lands at exactly that path, under exactly that name.** Both routes above
-produce it, and so does `agent-sync adopt <clone>/skills/herdr-advisor` if you would rather track a
-git clone. If you vendor it anywhere else, rewrite those paths.
+skill only works when it lands at exactly that path, under exactly that name.** `npx skills add`
+produces it, and so does `agent-sync adopt <clone>/skills/herdr-advisor` if you would rather track a
+git clone. If you vendor it anywhere else, rewrite those paths. That is also why it is not a Claude Code
+plugin: a plugin lands under `~/.claude/plugins/cache/`, where none of those paths resolve.
 
 ## Requirements
 

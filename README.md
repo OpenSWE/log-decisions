@@ -22,7 +22,8 @@ npx skills add OpenSWE/skills --skill log-decisions  # one skill
 
 ### Claude Code (plugin)
 
-Each skill is its own plugin in the `openswe` marketplace:
+Each skill except `herdr-advisor` is its own plugin in the `openswe` marketplace. `herdr-advisor` needs the
+`~/.agents/skills/` install path, so install it with `npx skills add` (see [its README](skills/herdr-advisor/)):
 
 ```text
 /plugin marketplace add OpenSWE/skills
@@ -37,7 +38,7 @@ All three old repos were merged in on 2026-10-14, with their full commit history
 
 - This repo was `OpenSWE/log-decisions`. GitHub redirects that URL here, so old clones and `npx skills add OpenSWE/log-decisions` still work.
 - `OpenSWE/herdr-advisor` and `OpenSWE/lessons` are archived. They still install, but they no longer get updates.
-- If you installed a plugin as `<name>@<name>` (for example `log-decisions@log-decisions`), uninstall it and install `<name>@openswe`.
+- If you installed a plugin as `<name>@<name>` (for example `log-decisions@log-decisions`), uninstall it and install `<name>@openswe`. For `herdr-advisor@herdr-advisor`, uninstall it and use `npx skills add OpenSWE/skills --skill herdr-advisor`.
 
 ## License
 

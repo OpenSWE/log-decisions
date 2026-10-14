@@ -30,31 +30,6 @@
       ]
     },
     {
-      "name": "herdr-advisor",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/herdr-advisor"
-      ],
-      "description": "Pair a Herdr worker with one advisor — a stronger model that answers the worker's questions on the user's behalf to unblock it and leads it to its next task, kept alive by an out-of-harness watchdog.",
-      "version": "1.0.0",
-      "author": {
-        "name": "soulmachine"
-      },
-      "homepage": "https://github.com/OpenSWE/skills",
-      "repository": "https://github.com/OpenSWE/skills",
-      "license": "MIT",
-      "keywords": [
-        "herdr",
-        "advisor",
-        "agents",
-        "multi-agent",
-        "afk",
-        "autonomy",
-        "terminal"
-      ]
-    },
-    {
       "name": "lessons",
       "source": "./",
       "strict": false,
