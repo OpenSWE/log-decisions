@@ -61,3 +61,13 @@
 **Justification:** A journal entry in a downstream repo recorded where a new row sits in a ranked table, placed by the table's own formula and a cited precedent commit — the user judged it not a decision. The old gate keyed on spec silence, which every detail satisfies, and "when in doubt, log" broke ties toward noise; the assume defaults listed pattern-matching as an assumption, inviting a determinable call to be logged as assumed.
 **Outcome:** applied
 **Ref:** (pending)
+
+## Q7 — interactive/skills-repo — irreversible-action
+
+**Question:** OpenSWE wants one repo for its published skills, starting with this one and `distill-prompt` from `soulmachine/skills`. Make a new `OpenSWE/skills`, or rename this repo to it?
+**Options considered:** rename `OpenSWE/log-decisions` to `OpenSWE/skills` / new repo, archive this one / new repo, delete this one
+**Chosen:** Rename, then copy `distill-prompt` in as `skills/distill-prompt/`. `plugin.json` is gone. `marketplace.json` is now the `openswe` marketplace with one plugin per skill, each `"source": "./"`, `"strict": false` and `"skills": ["./skills/<name>"]`. log-decisions stays at 1.3.1; distill-prompt starts at 1.0.0.
+**Decided-by:** human (rename); agent (marketplace name and manifest shape)
+**Justification:** The same reason as Q5: a rename keeps history, stars and issues, and GitHub redirects every old URL, so `npx skills add OpenSWE/log-decisions`, the Show HN link and the pending Plugin Directory review keep resolving. A marketplace named `log-decisions` would be wrong for a multi-skill repo, so it is now `openswe`. Users who installed `log-decisions@log-decisions` must reinstall; the README says how. One plugin per skill keeps each installable alone.
+**Outcome:** applied
+**Ref:** `.claude-plugin/marketplace.json`, `README.md`, `skills/distill-prompt/`. Source of the copy: `soulmachine/skills` 051f2ab.
