@@ -102,3 +102,13 @@
 **Outcome:** applied
 **Ref:** `.claude-plugin/`, README install sections; herdr-advisor Q67 makes that skill work from the plugin's folder
 **Supersedes:** Q9 — one plugin instead of one per skill; Q7 — only its manifest shape
+
+## Q11 — interactive/plugin-directory — irreversible-action
+
+**Question:** With the repo now one plugin (Q10), replace the old log-decisions Plugin Directory submission (portal id ecbfe5d1, in review since Aug 11) with a new one?
+**Options considered:** withdraw and resubmit / pin the old submission to a pre-Q7 tag
+**Chosen:** Withdrew ecbfe5d1 and submitted `OpenSWE/skills`, repo root, `main` @ ea0a197, as plugin `skills` v1.0.0: portal id c846fe22-388e-4bb9-bb15-bab0c1d09074, contact zhiqushi@gmail.com. Data handling: no personal data, no data sent to other services, nothing retained, not for under-18s. All four compliance statements were ticked on Frank's instruction. The form's defaults were kept: auto-publish on, GitHub push webhook (not yet set up, so the 6-hourly check applies).
+**Decided-by:** human
+**Justification:** The old submission tracked a repo-root plugin that no longer exists. Validation passed with four policy holds that go to a reviewer: a credential finding (herdr-advisor's `$PWD` beside a docs URL), a journal entry naming the icon file, and the name "skills" resembling the listing "AI Skills". A `displayName` in plugin.json could clear the name hold later.
+**Outcome:** applied
+**Ref:** https://claude.ai/directory/manage/plugins/c846fe22-388e-4bb9-bb15-bab0c1d09074
