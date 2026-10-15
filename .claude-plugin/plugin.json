@@ -1,6 +1,7 @@
 {
   "name": "skills",
-  "version": "1.0.0",
+  "displayName": "OpenSWE Skills",
+  "version": "1.0.1",
   "description": "OpenSWE's agent skills: log-decisions (a DECISIONS.md journal of the calls the spec didn't settle), lessons (a LESSONS.md ledger that turns review findings into code standards), herdr-advisor (pair a Herdr worker with a stronger advisor model), and distill-prompt (turn a session into one reusable prompt).",
   "author": {
     "name": "soulmachine"
